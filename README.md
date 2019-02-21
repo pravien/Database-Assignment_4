@@ -32,9 +32,67 @@ FLUSH privileges;
 * *ITUser* – The role of the IT User is to *maintain the database*, so CRUD rights and the ability to grant permissions seem enough.
 
 ## Exercise 2 - logging
-### SQL Queries
-```sql
-INSERT INTO classicmodels.employees VALUES (13370, "Knudsen", "Knud", "x1337", "email@email.email", 1, 1002, "Administrator of Sales");
-INSERT INTO classicmodels.employees VALUES (13360, "Børgesen", "Børge", "x1336", "email@email2.email", 1, 1002, "Sales Assistant");
-INSERT INTO classicmodels.products VALUES ("1337", "l33t", "Trains", "100:1", "Min Lin Diecast", "herp", 3, 70034234.60, 1000);
-INSERT INTO classicmodels.orders VALUES (1337, "2003-01-10", "2003-01-17", "2003-01-15", "Shipped", null, 128)
+**The users and their privileges being added**
+```
+ ('12:57:38',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  'Explain mysql.general_log'),
+ ('12:57:19',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  'SELECT st.* FROM performance_schema.events_waits_history_long st WHERE st.nesting_event_id = 87'),
+ ('12:57:19',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  'SELECT st.* FROM performance_schema.events_stages_history_long st WHERE st.nesting_event_id = 87'),
+ ('12:57:19',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  'SELECT st.* FROM performance_schema.events_statements_current st JOIN performance_schema.threads thr ON thr.thread_id = st.thread_id WHERE thr.processlist_id = 18'),
+ ('12:57:19',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  'Explain mysql.general_log'),
+ ('12:56:56',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  'GRANT SELECT ON classicmodels.orders TO BookkeepingUser@localhost'),
+ ('12:56:56', 'root[root] @  [172.17.0.1]', 'Query', 'SHOW WARNINGS'),
+ ('12:56:56',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  "CREATE USER 'ITUser'@'localhost' IDENTIFIED BY <secret>"),
+ ('12:56:56',
+  'root[root] @  [172.17.0.1]',
+  'Query',
+  'GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.products TO InventoryUser@localhost')
+```
+**The three changes to the database from above**
+```
+('13:13:26',
+  'root[root] @ localhost []',
+  'Query',
+  'INSERT INTO classicmodels.employees VALUES (13360, "Brgesen", "Brge", "x1336", "email@email2.email", 1, 1002, "Sales Assistant")'),
+ ('13:13:22',
+  'root[root] @ localhost []',
+  'Query',
+  'INSERT INTO classicmodels.employees VALUES (13370, "Knudsen", "Knud", "x1337", "email@email.email", 1, 1002, "Administrator of Sales")'),
+ ('13:13:11',
+  'root[root] @ localhost []',
+  'Query',
+  'INSERT INTO classicmodels.orders VALUES (1337, "2003-01-10", "2003-01-17", "2003-01-15", "Shipped", null, 128)'),
+ ('13:13:05',
+  'root[root] @ localhost []',
+  'Query',
+  'INSERT INTO classicmodels.products VALUES ("1337", "l33t", "Trains", "100:1", "Min Lin Diecast", "herp", 3, 70034234.60, 1000)')
+```
+**One attempt to make a change by a user with the wrong privileges**
+```
+ ('13:07:52',
+  '[InventoryUser] @  [172.17.0.1]',
+  'Connect',
+  "Access denied for user 'InventoryUser'@'172.17.0.1' (using password: YES)")
+```
+
+##
