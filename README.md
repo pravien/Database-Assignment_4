@@ -30,3 +30,11 @@ FLUSH privileges;
 * *HRUser* – The Human Resources user *take care of* **employees** and their **offices**, so CRUD rights are enough to fulfill this requirement.
 * *SalesUser* – This user *creates orders* for the customers, which most likely only involves inserting new orders into the **orders** table.
 * *ITUser* – The role of the IT User is to *maintain the database*, so CRUD rights and the ability to grant permissions seem enough.
+
+## Exercise 2 - logging
+### SQL Queries
+```sql
+INSERT INTO classicmodels.employees VALUES (13370, "Knudsen", "Knud", "x1337", "email@email.email", 1, 1002, "Administrator of Sales");
+INSERT INTO classicmodels.employees VALUES (13360, "Børgesen", "Børge", "x1336", "email@email2.email", 1, 1002, "Sales Assistant");
+INSERT INTO classicmodels.products VALUES ("1337", "l33t", "Trains", "100:1", "Min Lin Diecast", "herp", 3, 70034234.60, 1000);
+INSERT INTO classicmodels.orders VALUES (1337, "2003-01-10", "2003-01-17", "2003-01-15", "Shipped", null, 128)
