@@ -95,4 +95,5 @@ FLUSH privileges;
   "Access denied for user 'InventoryUser'@'172.17.0.1' (using password: YES)")
 ```
 
-##
+## Exercise 3 - backup and recovery
+
