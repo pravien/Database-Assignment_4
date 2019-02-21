@@ -25,8 +25,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE, GRANT OPTION ON classicmodels.* TO ITUser@
 FLUSH privileges;
 ```
 ---
-• *InventoryUser* – This user needs to be able to *maintain* the two tables **products** and **productlines**, and we determined the CRUD rights would be sufficient
-• *BookkeepingUser* – The Bookkeeping user needs to *make sure that orders are paid*, which can be accomplished by simple SELECT rights.
-• *HRUser* – The Human Resources user *take care of* employees and their offices, so CRUD rights are enough to fulfill this requirement.
-• *SalesUser* – This user *creates orders* for the customers, which most likely only involves inserting new orders into the orders table.
-• *ITUser* – The role of the IT User is to *maintain the database*, so CRUD rights and the ability to grant permissions seem enough.
+* *InventoryUser* – This user needs to be able to *maintain* the two tables **products** and **productlines**, and we determined the CRUD rights would be sufficient
+* *BookkeepingUser* – The Bookkeeping user needs to *make sure that orders are paid*, which can be accomplished by simple SELECT rights.
+* *HRUser* – The Human Resources user *take care of* employees and their offices, so CRUD rights are enough to fulfill this requirement.
+* *SalesUser* – This user *creates orders* for the customers, which most likely only involves inserting new orders into the orders table.
+* *ITUser* – The role of the IT User is to *maintain the database*, so CRUD rights and the ability to grant permissions seem enough.
