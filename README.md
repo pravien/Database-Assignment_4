@@ -96,4 +96,9 @@ FLUSH privileges;
 ```
 
 ## Exercise 3 - backup and recovery
+The repository contains an SQL file *dump.sql* – a full logical backup – of the entire database, which will create the schema anew, create the different tables, and insert all the rows that were there at the time of the backup being made.
 
+In a Bash terminal, chance directory to ```/Database-Assignment_4``` and type the command below to create the database *classicmodels*:
+```bash
+mysql < dump.sql
+```
