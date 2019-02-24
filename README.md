@@ -34,26 +34,8 @@ FLUSH privileges;
 ## Exercise 2 - logging
 **The users and their privileges being added**
 ```
- ('12:57:38',
-  'root[root] @  [172.17.0.1]',
-  'Query',
-  'Explain mysql.general_log'),
- ('12:57:19',
-  'root[root] @  [172.17.0.1]',
-  'Query',
-  'SELECT st.* FROM performance_schema.events_waits_history_long st WHERE st.nesting_event_id = 87'),
- ('12:57:19',
-  'root[root] @  [172.17.0.1]',
-  'Query',
-  'SELECT st.* FROM performance_schema.events_stages_history_long st WHERE st.nesting_event_id = 87'),
- ('12:57:19',
-  'root[root] @  [172.17.0.1]',
-  'Query',
-  'SELECT st.* FROM performance_schema.events_statements_current st JOIN performance_schema.threads thr ON thr.thread_id = st.thread_id WHERE thr.processlist_id = 18'),
- ('12:57:19',
-  'root[root] @  [172.17.0.1]',
-  'Query',
-  'Explain mysql.general_log'),
+ ...
+ 
  ('12:56:56',
   'root[root] @  [172.17.0.1]',
   'Query',
